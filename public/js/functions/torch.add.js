@@ -23,7 +23,7 @@ const sourceCode = `
 `;
 const explanation = `
   <div class="explanation">
-  <p><code>add</code> performs element-wise addition of two fxnArgs.</p>
+  <p><code>add</code> performs element-wise addition of two tensors.</p>
 
   <p>The item in the <code>i</code>th row and <code>j</code>th column of <code>ans</code> is the
   sum of the items at the same indices in <code>A</code> and <code>B</code>.</p>

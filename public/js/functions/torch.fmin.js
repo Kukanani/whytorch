@@ -1,4 +1,4 @@
-const method = "torch.maximum";
+const method = "torch.fmin";
 function do_function(fxnArgs) {
   let input = fxnArgs.input;
   let other = fxnArgs.other;
@@ -9,24 +9,32 @@ function do_function(fxnArgs) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < m; j++) {
       let re = result.getItem([i, j]);
-      re.value = Math.max(input.getItem([i, j]).value, other.getItem([i, j]).value);
+      if(isNaN(input.getItem([i, j]).value)) {
+        re.value = other.getItem([i, j]).value;
+      } else if(isNaN(other.getItem([i, j]).value)) {
+        re.value = input.getItem([i, j]).value;
+      } else {
+        re.value = Math.min(input.getItem([i, j]).value, other.getItem([i, j]).value);
+      }
       re.addRelation(input, [i, j]);
       re.addRelation(other, [i, j]);
       re.explainingEquation = (r) => {
-        return `max(${input.getItem([i, j]).makeElem().outerHTML}, ${other.getItem([i, j]).makeElem().outerHTML}) = ${r.makeElem().outerHTML}`;
+        return `min(${input.getItem([i, j]).makeElem().outerHTML}, ${other.getItem([i, j]).makeElem().outerHTML}) = ${r.makeElem().outerHTML}`;
       };
     }
   }
   return result;
 }
 sourceCode = `
-  <code>ans = <a href="https://docs.pytorch.org/docs/stable/generated/torch.maximum.html">torch.maximum</a>(input, other)</code><br/>
+  <code>ans = <a href="https://docs.pytorch.org/docs/stable/generated/torch.fmin.html">torch.fmin</a>(input, other)</code><br/>
 `;
 explanation = `
   <div class="explanation">
-  <p><code>maximum</code> finds the element-wise maximum of two tensors.</p>
+  <p><code>fmin</code> finds the element-wise minimum of two tensors, robust to <code>nan</code> values.</p>
   <p>The item in the <code>i</code>th row and <code>j</code>th column of <code>ans</code> is the
-  maximum of the items at the same indices in <code>input</code> and <code>other</code>, or <code>nan</code> if either item is <code>nan</code>.</p>
+  fmin of the items at the same indices in <code>input</code> and <code>other</code>, or <code>nan</code> if both items are <code>nan</code>.</p>
+  <p>This function is the same as <code>torch.minimum</code>, except, that it only produces <code>nan</code> if <u>both</u> elements are <code>nan</code>.
+  If one is <code>nan</code>, the non-<code>nan</code> value is used instead.</p>
   </div>
 `;
 var fxnArgs = {};

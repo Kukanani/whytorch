@@ -35,7 +35,7 @@ const sourceCode = `
 `;
 const explanation = `
   <div class="explanation">
-  <p><code>matmul</code> performs the <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">matrix product</a> of two fxnArgs.</p>
+  <p><code>matmul</code> performs the <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">matrix product</a> of two tensors.</p>
   <p>The item in the <code>i</code>th row and <code>j</code>th column of <code>ans</code> is the <a href="https://en.wikipedia.org/wiki/Dot_product">dot product</a> of the <code>i</code>th row of <code>A</code> and the <code>j</code>th column of <code>B</code>.</p>
   </div>
 `;

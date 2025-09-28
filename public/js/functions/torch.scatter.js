@@ -45,7 +45,7 @@ function do_function(fxnArgs) {
         ritem.addRelation(index, [i, j]);
         ritem.addRelation(dim, []);
         ritem.explainingEquation = (r) => {
-          return `src[${i}, ${index.getItem([i, j]).makeElem(d=dim).outerHTML}] = ${src.getItem([i, j]).makeElem().outerHTML} -> ` + r.makeElem().outerHTML;
+          return `src[${i}, ${index.getItem([i, j]).makeElem(d=dim).outerHTML}] = ${src.getItem([i, j]).makeElem().outerHTML} → ` + r.makeElem().outerHTML;
         };
       }
     }

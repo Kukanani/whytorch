@@ -1,4 +1,24 @@
 
+function makeDimIndicatorElement(d) {
+    const dimIndicatorElement = document.createElement("span");
+    dimIndicatorElement.classList.add("hd" + d.orderNumber);
+    const dimIndicatorElementInner = document.createElement("span");
+    dimIndicatorElementInner.className = "hd-inner";
+    dimIndicatorElementInner.textContent = d.name + " " + d.getItem([]).value;
+    dimIndicatorElement.appendChild(dimIndicatorElementInner);
+
+    return dimIndicatorElement;
+}
+
+function makeDimAnnotatedElement(text, d) {
+  const containingElem = document.createElement("span");
+  containingElem.classList = "number ghost";
+  let dimIndicatorElement = makeDimIndicatorElement(d);
+  containingElem.appendChild(dimIndicatorElement);
+  containingElem.appendChild(document.createTextNode(text));
+
+  return containingElem;
+}
 class TensorItem {
   constructor(value, parent, coords, explainingEquation = null) {
     this.value = value;
@@ -106,12 +126,7 @@ class TensorItem {
     spanElem.className = "number"
     spanElem.classList.add(this.parent.name + this.coords.join(''));
     if (d !== null) {
-      const dimIndicatorElement = document.createElement("span");
-      dimIndicatorElement.classList.add("hd" + d.orderNumber);
-      const dimIndicatorElementInner = document.createElement("span");
-      dimIndicatorElementInner.className = "hd-inner";
-      dimIndicatorElementInner.textContent = d.name + " " + d.getItem([]).value;
-      dimIndicatorElement.appendChild(dimIndicatorElementInner);
+      let dimIndicatorElement = makeDimIndicatorElement(d);
       spanElem.appendChild(dimIndicatorElement);
     }
     spanElem.appendChild(document.createTextNode(this.value));
@@ -233,8 +248,8 @@ class Tensor {
   }
 
   display(parent) {
-    const matrixDiv = document.createElement("div");
-    matrixDiv.className = `matrix matrix-${this.orderNumber}`;
+    const tensorDiv = document.createElement("div");
+    tensorDiv.className = `tensor tensor-${this.orderNumber}`;
 
     const tensorNameDiv = document.createElement("div");
     tensorNameDiv.innerHTML = this.name;
@@ -242,7 +257,7 @@ class Tensor {
 
     // Create table
     const table = document.createElement("table");
-    table.className = "matrix-table";
+    table.className = "tensor-table";
 
     if (this.shape.length === 0) {
       // Scalar case
@@ -260,7 +275,7 @@ class Tensor {
       headerRow.appendChild(document.createElement("td")); // inner left bracket (empty)
       for (let j = 0; j < this.shape[1]; j++) {
         const th = document.createElement("td");
-        th.className = "matrix-index-col";
+        th.className = "tensor-index-col";
         th.textContent = j;
         headerRow.appendChild(th);
         if (j < this.shape[1] - 1) {
@@ -271,12 +286,12 @@ class Tensor {
       headerRow.appendChild(document.createElement("td")); // outer right bracket/row-trailing comma (empty)
       table.appendChild(headerRow);
 
-      // Build matrix rows
+      // Build tensor rows
       for (let i = 0; i < this.shape[0]; i++) {
         const tr = document.createElement("tr");
         // Row index
         const rowIdx = document.createElement("td");
-        rowIdx.className = "matrix-index-row";
+        rowIdx.className = "tensor-index-row";
         rowIdx.textContent = i;
         tr.appendChild(rowIdx);
 
@@ -327,9 +342,9 @@ class Tensor {
         table.appendChild(tr);
       }
     }
-    matrixDiv.appendChild(tensorNameDiv);
-    matrixDiv.appendChild(table);
-    parent.appendChild(matrixDiv);
+    tensorDiv.appendChild(tensorNameDiv);
+    tensorDiv.appendChild(table);
+    parent.appendChild(tensorDiv);
   }
 }
 

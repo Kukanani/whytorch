@@ -209,19 +209,28 @@ a {
   min-width: 2ch;
 }
 
+#equation .number {
+  cursor: default;
+}
+
+.ghost {
+  border-style: dashed;
+  background-color: transparent;
+}
+
 /* ====== Matrix ====== */
-.matrix {
+.tensor {
   padding: 1em 0.5em;
 }
 
-.matrix-table {
+.tensor-table {
   border-collapse: separate;
   border-spacing: 0;
   font-family: monospace;
   background: none;
 }
 
-.matrix-table td {
+.tensor-table td {
   text-align: center;
   vertical-align: middle;
   background: none;
@@ -229,27 +238,27 @@ a {
   font-size: 1em;
 }
 
-.matrix-table .matrix-index-col {
+.tensor-table .tensor-index-col {
   color: inherit;
   font-size: 0.7em;
   font-style: italic;
 }
 
-.matrix-table .matrix-index-row {
+.tensor-table .tensor-index-row {
   color: inherit;
   font-size: 0.7em;
   text-align: right;
   font-style: italic;
 }
 
-.matrix-table .bracket {
+.tensor-table .bracket {
   font-size: 1.3em;
   color: rgba(128, 128, 128, 0.5);
   background: none;
   border: none;
 }
 
-.matrix-table .number {
+.tensor-table .number {
   font-family: monospace;
   background-color: rgba(255, 255, 255, 0.05);
   border: 0.1em solid rgba(255, 255, 255, 0.1);
@@ -260,28 +269,28 @@ a {
   padding: 0.2em;
 }
 
-.matrix-table td {
+.tensor-table td {
   padding: 0;
   height: 1em;
 }
 
-.matrix-0 .matrix-table td.matrix-index-row,
-.matrix-0 .matrix-table td.matrix-index-col {
+.tensor-0 .tensor-table td.tensor-index-row,
+.tensor-0 .tensor-table td.tensor-index-col {
   color: hsla(45, 100%, 55%, 25%);
 }
 
-.matrix-1 .matrix-table td.matrix-index-row,
-.matrix-1 .matrix-table td.matrix-index-col {
+.tensor-1 .tensor-table td.tensor-index-row,
+.tensor-1 .tensor-table td.tensor-index-col {
   color: hsla(338, 78%, 55%, 25%);
 }
 
-.matrix-2 .matrix-table td.matrix-index-row,
-.matrix-2 .matrix-table td.matrix-index-col {
+.tensor-2 .tensor-table td.tensor-index-row,
+.tensor-2 .tensor-table td.tensor-index-col {
   color: hsla(208, 79%, 55%, 25%);
 }
 
-.matrix-3 .matrix-table td.matrix-index-row,
-.matrix-3 .matrix-table td.matrix-index-col {
+.tensor-3 .tensor-table td.tensor-index-row,
+.tensor-3 .tensor-table td.tensor-index-col {
   color: hsla(140, 60%, 45%, 0.25);
 }
 
@@ -332,420 +341,420 @@ a {
 
 /* ====== Color Classes ====== */
 .h00,
-.matrix-table .h00 {
+.tensor-table .h00 {
   color: hsl(45, 100%, 85%);
   background-color: hsl(45, 100%, 40%);
   border: 0.1em dotted hsl(45, 100%, 85%);
 }
 
 .h01,
-.matrix-table .h01 {
+.tensor-table .h01 {
   color: hsl(45, 100%, 70%);
   background-color: hsl(45, 100%, 30%);
   border: 0.1em dotted hsl(45, 100%, 70%);
 }
 
 .h02,
-.matrix-table .h02 {
+.tensor-table .h02 {
   color: hsl(45, 100%, 55%);
   background-color: hsl(45, 100%, 20%);
   border: 0.1em dotted hsl(45, 100%, 55%);
 }
 
 .h03,
-.matrix-table .h03 {
+.tensor-table .h03 {
   color: hsl(45, 100%, 40%);
   background-color: hsl(45, 100%, 10%);
   border: 0.1em dotted hsl(45, 100%, 40%);
 }
 
 .h04,
-.matrix-table .h04 {
+.tensor-table .h04 {
   color: hsl(45, 100%, 40%);
   background-color: hsl(45, 100%, 10%);
   border: 0.1em dotted hsl(45, 100%, 40%);
 }
 
 .h05,
-.matrix-table .h05 {
+.tensor-table .h05 {
   color: hsl(45, 100%, 40%);
   background-color: hsl(45, 100%, 10%);
   border: 0.1em dotted hsl(45, 100%, 40%);
 }
 
 .h06,
-.matrix-table .h06 {
+.tensor-table .h06 {
   color: hsl(45, 100%, 40%);
   background-color: hsl(45, 100%, 10%);
   border: 0.1em dotted hsl(45, 100%, 40%);
 }
 
 .h07,
-.matrix-table .h07 {
+.tensor-table .h07 {
   color: hsl(45, 100%, 40%);
   background-color: hsl(45, 100%, 10%);
   border: 0.1em dotted hsl(45, 100%, 40%);
 }
 
 .h08,
-.matrix-table .h08 {
+.tensor-table .h08 {
   color: hsl(45, 100%, 40%);
   background-color: hsl(45, 100%, 10%);
   border: 0.1em dotted hsl(45, 100%, 40%);
 }
 
 .h09,
-.matrix-table .h09 {
+.tensor-table .h09 {
   color: hsl(45, 100%, 40%);
   background-color: hsl(45, 100%, 10%);
   border: 0.1em dotted hsl(45, 100%, 40%);
 }
 
 .h010,
-.matrix-table .h010 {
+.tensor-table .h010 {
   color: hsl(45, 100%, 40%);
   background-color: hsl(45, 100%, 10%);
   border: 0.1em dotted hsl(45, 100%, 40%);
 }
 
 .h011,
-.matrix-table .h011 {
+.tensor-table .h011 {
   color: hsl(45, 100%, 40%);
   background-color: hsl(45, 100%, 10%);
   border: 0.1em dotted hsl(45, 100%, 40%);
 }
 
 .h10,
-.matrix-table .h10 {
+.tensor-table .h10 {
   color: hsl(338, 78%, 85%);
   background-color: hsl(338, 78%, 40%);
   border: 0.1em double hsl(338, 78%, 85%);
 }
 
 .h11,
-.matrix-table .h11 {
+.tensor-table .h11 {
   color: hsl(338, 78%, 70%);
   background-color: hsl(338, 78%, 30%);
   border: 0.1em double hsl(338, 78%, 70%);
 }
 
 .h12,
-.matrix-table .h12 {
+.tensor-table .h12 {
   color: hsl(338, 78%, 55%);
   background-color: hsl(338, 78%, 20%);
   border: 0.1em double hsl(338, 78%, 55%);
 }
 
 .h13,
-.matrix-table .h13 {
+.tensor-table .h13 {
   color: hsl(338, 78%, 40%);
   background-color: hsl(338, 78%, 10%);
   border: 0.1em double hsl(338, 78%, 40%);
 }
 
 .h14,
-.matrix-table .h14 {
+.tensor-table .h14 {
   color: hsl(338, 78%, 40%);
   background-color: hsl(338, 78%, 10%);
   border: 0.1em double hsl(338, 78%, 40%);
 }
 
 .h15,
-.matrix-table .h15 {
+.tensor-table .h15 {
   color: hsl(338, 78%, 40%);
   background-color: hsl(338, 78%, 10%);
   border: 0.1em double hsl(338, 78%, 40%);
 }
 
 .h16,
-.matrix-table .h16 {
+.tensor-table .h16 {
   color: hsl(338, 78%, 40%);
   background-color: hsl(338, 78%, 10%);
   border: 0.1em double hsl(338, 78%, 40%);
 }
 
 .h17,
-.matrix-table .h17 {
+.tensor-table .h17 {
   color: hsl(338, 78%, 40%);
   background-color: hsl(338, 78%, 10%);
   border: 0.1em double hsl(338, 78%, 40%);
 }
 
 .h18,
-.matrix-table .h18 {
+.tensor-table .h18 {
   color: hsl(338, 78%, 40%);
   background-color: hsl(338, 78%, 10%);
   border: 0.1em double hsl(338, 78%, 40%);
 }
 
 .h19,
-.matrix-table .h19 {
+.tensor-table .h19 {
   color: hsl(338, 78%, 40%);
   background-color: hsl(338, 78%, 10%);
   border: 0.1em double hsl(338, 78%, 40%);
 }
 
 .h110,
-.matrix-table .h110 {
+.tensor-table .h110 {
   color: hsl(338, 78%, 40%);
   background-color: hsl(338, 78%, 10%);
   border: 0.1em double hsl(338, 78%, 40%);
 }
 
 .h111,
-.matrix-table .h111 {
+.tensor-table .h111 {
   color: hsl(338, 78%, 40%);
   background-color: hsl(338, 78%, 10%);
   border: 0.1em double hsl(338, 78%, 40%);
 }
 
 .h20,
-.matrix-table .h20 {
+.tensor-table .h20 {
   color: hsl(208, 79%, 85%);
   background-color: hsl(208, 79%, 40%);
   border: 0.1em dashed hsl(208, 79%, 85%);
 }
 
 .h21,
-.matrix-table .h21 {
+.tensor-table .h21 {
   color: hsl(208, 79%, 70%);
   background-color: hsl(208, 79%, 30%);
   border: 0.1em dashed hsl(208, 79%, 70%);
 }
 
 .h22,
-.matrix-table .h22 {
+.tensor-table .h22 {
   color: hsl(208, 79%, 55%);
   background-color: hsl(208, 79%, 20%);
   border: 0.1em dashed hsl(208, 79%, 55%);
 }
 
 .h23,
-.matrix-table .h23 {
+.tensor-table .h23 {
   color: hsl(208, 79%, 40%);
   background-color: hsl(208, 79%, 10%);
   border: 0.1em dashed hsl(208, 79%, 40%);
 }
 
 .h24,
-.matrix-table .h24 {
+.tensor-table .h24 {
   color: hsl(208, 79%, 40%);
   background-color: hsl(208, 79%, 10%);
   border: 0.1em dashed hsl(208, 79%, 40%);
 }
 
 .h25,
-.matrix-table .h25 {
+.tensor-table .h25 {
   color: hsl(208, 79%, 40%);
   background-color: hsl(208, 79%, 10%);
   border: 0.1em dashed hsl(208, 79%, 40%);
 }
 
 .h26,
-.matrix-table .h26 {
+.tensor-table .h26 {
   color: hsl(208, 79%, 40%);
   background-color: hsl(208, 79%, 10%);
   border: 0.1em dashed hsl(208, 79%, 40%);
 }
 
 .h27,
-.matrix-table .h27 {
+.tensor-table .h27 {
   color: hsl(208, 79%, 40%);
   background-color: hsl(208, 79%, 10%);
   border: 0.1em dashed hsl(208, 79%, 40%);
 }
 
 .h28,
-.matrix-table .h28 {
+.tensor-table .h28 {
   color: hsl(208, 79%, 40%);
   background-color: hsl(208, 79%, 10%);
   border: 0.1em dashed hsl(208, 79%, 40%);
 }
 
 .h29,
-.matrix-table .h29 {
+.tensor-table .h29 {
   color: hsl(208, 79%, 40%);
   background-color: hsl(208, 79%, 10%);
   border: 0.1em dashed hsl(208, 79%, 40%);
 }
 
 .h210,
-.matrix-table .h210 {
+.tensor-table .h210 {
   color: hsl(208, 79%, 40%);
   background-color: hsl(208, 79%, 10%);
   border: 0.1em dashed hsl(208, 79%, 40%);
 }
 
 .h211,
-.matrix-table .h211 {
+.tensor-table .h211 {
   color: hsl(208, 79%, 40%);
   background-color: hsl(208, 79%, 10%);
   border: 0.1em dashed hsl(208, 79%, 40%);
 }
 
 .h30,
-.matrix-table .h30 {
+.tensor-table .h30 {
   color: hsl(140, 60%, 80%);
   background-color: hsl(140, 60%, 40%);
   border: 0.1em solid hsl(140, 60%, 80%);
 }
 
 .h31,
-.matrix-table .h31 {
+.tensor-table .h31 {
   color: hsl(140, 60%, 60%);
   background-color: hsl(140, 60%, 30%);
   border: 0.1em solid hsl(140, 60%, 60%);
 }
 
 .h32,
-.matrix-table .h32 {
+.tensor-table .h32 {
   color: hsl(140, 60%, 45%);
   background-color: hsl(140, 60%, 20%);
   border: 0.1em solid hsl(140, 60%, 45%);
 }
 
 .h33,
-.matrix-table .h33 {
+.tensor-table .h33 {
   color: hsl(140, 60%, 30%);
   background-color: hsl(140, 60%, 10%);
   border: 0.1em solid hsl(140, 60%, 30%);
 }
 
 .h34,
-.matrix-table .h34 {
+.tensor-table .h34 {
   color: hsl(140, 60%, 30%);
   background-color: hsl(140, 60%, 10%);
   border: 0.1em solid hsl(140, 60%, 30%);
 }
 
 .h35,
-.matrix-table .h35 {
+.tensor-table .h35 {
   color: hsl(140, 60%, 30%);
   background-color: hsl(140, 60%, 10%);
   border: 0.1em solid hsl(140, 60%, 30%);
 }
 
 .h36,
-.matrix-table .h36 {
+.tensor-table .h36 {
   color: hsl(140, 60%, 30%);
   background-color: hsl(140, 60%, 10%);
   border: 0.1em solid hsl(140, 60%, 30%);
 }
 
 .h37,
-.matrix-table .h37 {
+.tensor-table .h37 {
   color: hsl(140, 60%, 30%);
   background-color: hsl(140, 60%, 10%);
   border: 0.1em solid hsl(140, 60%, 30%);
 }
 
 .h38,
-.matrix-table .h38 {
+.tensor-table .h38 {
   color: hsl(140, 60%, 30%);
   background-color: hsl(140, 60%, 10%);
   border: 0.1em solid hsl(140, 60%, 30%);
 }
 
 .h39,
-.matrix-table .h39 {
+.tensor-table .h39 {
   color: hsl(140, 60%, 30%);
   background-color: hsl(140, 60%, 10%);
   border: 0.1em solid hsl(140, 60%, 30%);
 }
 
 .h310,
-.matrix-table .h310 {
+.tensor-table .h310 {
   color: hsl(140, 60%, 30%);
   background-color: hsl(140, 60%, 10%);
   border: 0.1em solid hsl(140, 60%, 30%);
 }
 
 .h311,
-.matrix-table .h311 {
+.tensor-table .h311 {
   color: hsl(140, 60%, 30%);
   background-color: hsl(140, 60%, 10%);
   border: 0.1em solid hsl(140, 60%, 30%);
 }
 
 .h40,
-.matrix-table .h40 {
+.tensor-table .h40 {
   color: hsl(270, 80%, 90%);
   background-color: hsl(270, 80%, 40%);
   border: 0.1em solid hsl(270, 80%, 90%);
 }
 
 .h41,
-.matrix-table .h41 {
+.tensor-table .h41 {
   color: hsl(270, 80%, 75%);
   background-color: hsl(270, 80%, 30%);
   border: 0.1em solid hsl(270, 80%, 75%);
 }
 
 .h42,
-.matrix-table .h42 {
+.tensor-table .h42 {
   color: hsl(270, 80%, 60%);
   background-color: hsl(270, 80%, 20%);
   border: 0.1em solid hsl(270, 80%, 60%);
 }
 
 .h43,
-.matrix-table .h43 {
+.tensor-table .h43 {
   color: hsl(270, 80%, 45%);
   background-color: hsl(270, 80%, 10%);
   border: 0.1em solid hsl(270, 80%, 45%);
 }
 
 .h44,
-.matrix-table .h44 {
+.tensor-table .h44 {
   color: hsl(270, 80%, 30%);
   background-color: hsl(270, 80%, 10%);
   border: 0.1em solid hsl(270, 80%, 30%);
 }
 
 .h45,
-.matrix-table .h45 {
+.tensor-table .h45 {
   color: hsl(270, 80%, 30%);
   background-color: hsl(270, 80%, 10%);
   border: 0.1em solid hsl(270, 80%, 30%);
 }
 
 .h46,
-.matrix-table .h46 {
+.tensor-table .h46 {
   color: hsl(270, 80%, 30%);
   background-color: hsl(270, 80%, 10%);
   border: 0.1em solid hsl(270, 80%, 30%);
 }
 
 .h47,
-.matrix-table .h47 {
+.tensor-table .h47 {
   color: hsl(270, 80%, 30%);
   background-color: hsl(270, 80%, 10%);
   border: 0.1em solid hsl(270, 80%, 30%);
 }
 
 .h48,
-.matrix-table .h48 {
+.tensor-table .h48 {
   color: hsl(270, 80%, 30%);
   background-color: hsl(270, 80%, 10%);
   border: 0.1em solid hsl(270, 80%, 30%);
 }
 
 .h49,
-.matrix-table .h49 {
+.tensor-table .h49 {
   color: hsl(270, 80%, 30%);
   background-color: hsl(270, 80%, 10%);
   border: 0.1em solid hsl(270, 80%, 30%);
 }
 
 .h410,
-.matrix-table .h410 {
+.tensor-table .h410 {
   color: hsl(270, 80%, 30%);
   background-color: hsl(270, 80%, 10%);
   border: 0.1em solid hsl(270, 80%, 30%);
 }
 
 .h411,
-.matrix-table .h411 {
+.tensor-table .h411 {
   color: hsl(270, 80%, 30%);
   background-color: hsl(270, 80%, 10%);
   border: 0.1em solid hsl(270, 80%, 30%);
