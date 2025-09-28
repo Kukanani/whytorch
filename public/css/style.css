@@ -1,0 +1,809 @@
+/* ====== Layout ====== */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  overflow-x: hidden;
+}
+
+.main-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+.main-content-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5em;
+}
+
+/* ====== Sidebar ====== */
+.sidebar {
+  background-color: #2a2a2a;
+  border-right: 0.1em solid #444;
+  overflow-y: auto;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  min-height: 100%;
+}
+
+.sidebar-header {
+  padding: 1rem;
+  border-bottom: 0.1em solid #444;
+  font-weight: bold;
+  font-size: 1.1em;
+  position: sticky;
+  top: 0;
+  background-color: #2a2a2a;
+  z-index: 10;
+}
+
+.sidebar-content {
+  padding: 1rem;
+  overflow-x: hidden;
+}
+
+/* ====== Sidebar Navigation ====== */
+.method-group {
+  margin-bottom: 1.5rem;
+}
+
+.method-group h3 {
+  margin: 0 0 0.5rem 0;
+  color: #888;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.method-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.method-list li {
+  margin-bottom: 0.25rem;
+  display: block;
+  padding: 0.25rem 0;
+  font-size: 0.9em;
+  font-family: monospace;
+}
+
+.method-list a {
+  color: #aaaaff;
+  transition: color 0.2s ease;
+}
+
+.method-list a:hover {
+  color: #ccccff;
+}
+
+.method-list a.unsupported {
+  color: #aaa;
+}
+
+.method-list a.unsupported:hover {
+  color: #ccc;
+}
+
+/* ====== Hamburger Menu ====== */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  background: #333;
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25em;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+/* ====== Typography ====== */
+#title {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 1em;
+  text-align: center;
+}
+
+a {
+  color: #8888ff;
+}
+
+/* ====== Content ====== */
+.content {
+  /* display: flex; */
+  /* flex-direction: column; */
+  align-items: center;
+  /* flex-grow: 1; */
+}
+
+#tensors {
+  padding: 0 1.5em;
+  border-radius: 2em;
+  background-color: rgba(255, 255, 255, 0.05);
+  font-size: 1.5em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#tensors.error {
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 2px dashed rgba(255, 0, 0, 0.5);
+}
+
+.tensorname {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.2em;
+  padding-bottom: 1em;
+}
+
+#sourceCode {
+  width: 100%;
+  display: inline-block;
+  font-size: 1.5em;
+  line-height: 2em;
+}
+
+.codeAnnotation {
+  font-style: italic;
+  color: #888;
+  padding-left: 2em;
+  font-size: 0.8em;
+}
+
+#equation {
+  margin: 1em 0;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 1.6em;
+  text-align: center;
+}
+
+
+/* ====== Components ====== */
+.number {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 0.1em solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.2em 0.3em;
+  margin: 0.1em 0;
+  border-radius: 0.25em;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  font-family: monospace;
+  min-width: 2ch;
+}
+
+/* ====== Matrix ====== */
+.matrix {
+  padding: 1em 0.5em;
+}
+
+.matrix-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: monospace;
+  background: none;
+}
+
+.matrix-table td {
+  text-align: center;
+  vertical-align: middle;
+  background: none;
+  border: none;
+  font-size: 1em;
+}
+
+.matrix-table .matrix-index-col {
+  color: inherit;
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+.matrix-table .matrix-index-row {
+  color: inherit;
+  font-size: 0.7em;
+  text-align: right;
+  font-style: italic;
+}
+
+.matrix-table .bracket {
+  font-size: 1.3em;
+  color: rgba(128, 128, 128, 0.5);
+  background: none;
+  border: none;
+}
+
+.matrix-table .number {
+  font-family: monospace;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 0.1em solid rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 0.25em;
+  text-align: center;
+  font-size: 1em;
+  padding: 0.2em;
+}
+
+.matrix-table td {
+  padding: 0;
+  height: 1em;
+}
+
+.matrix-0 .matrix-table td.matrix-index-row,
+.matrix-0 .matrix-table td.matrix-index-col {
+  color: hsla(45, 100%, 55%, 25%);
+}
+
+.matrix-1 .matrix-table td.matrix-index-row,
+.matrix-1 .matrix-table td.matrix-index-col {
+  color: hsla(338, 78%, 55%, 25%);
+}
+
+.matrix-2 .matrix-table td.matrix-index-row,
+.matrix-2 .matrix-table td.matrix-index-col {
+  color: hsla(208, 79%, 55%, 25%);
+}
+
+.matrix-3 .matrix-table td.matrix-index-row,
+.matrix-3 .matrix-table td.matrix-index-col {
+  color: hsla(140, 60%, 45%, 0.25);
+}
+
+.highlight {
+  font-weight: bold;
+}
+
+.hd0,
+.hd1,
+.hd2,
+.hd3,
+.hd4 {
+  position: relative;
+  width: 0;
+  height: 0;
+  display: block;
+  left: -50%;
+  line-height: 1;
+  font-size: 0.8em;
+}
+
+.hd0 {
+  color: hsl(45, 100%, 55%);
+}
+
+.hd1 {
+  color: hsl(338, 78%, 55%);
+}
+
+.hd2 {
+  color: hsl(208, 79%, 55%);
+}
+
+.hd3 {
+  color: hsl(140, 60%, 45%);
+}
+
+.hd4 {
+  color: hsl(270, 80%, 60%);
+}
+
+.hd-inner {
+  position: absolute;
+  width: max-content;
+  text-align: center;
+  top: -1.5em;
+}
+
+/* ====== Color Classes ====== */
+.h00,
+.matrix-table .h00 {
+  color: hsl(45, 100%, 85%);
+  background-color: hsl(45, 100%, 40%);
+  border: 0.1em dotted hsl(45, 100%, 85%);
+}
+
+.h01,
+.matrix-table .h01 {
+  color: hsl(45, 100%, 70%);
+  background-color: hsl(45, 100%, 30%);
+  border: 0.1em dotted hsl(45, 100%, 70%);
+}
+
+.h02,
+.matrix-table .h02 {
+  color: hsl(45, 100%, 55%);
+  background-color: hsl(45, 100%, 20%);
+  border: 0.1em dotted hsl(45, 100%, 55%);
+}
+
+.h03,
+.matrix-table .h03 {
+  color: hsl(45, 100%, 40%);
+  background-color: hsl(45, 100%, 10%);
+  border: 0.1em dotted hsl(45, 100%, 40%);
+}
+
+.h04,
+.matrix-table .h04 {
+  color: hsl(45, 100%, 40%);
+  background-color: hsl(45, 100%, 10%);
+  border: 0.1em dotted hsl(45, 100%, 40%);
+}
+
+.h05,
+.matrix-table .h05 {
+  color: hsl(45, 100%, 40%);
+  background-color: hsl(45, 100%, 10%);
+  border: 0.1em dotted hsl(45, 100%, 40%);
+}
+
+.h06,
+.matrix-table .h06 {
+  color: hsl(45, 100%, 40%);
+  background-color: hsl(45, 100%, 10%);
+  border: 0.1em dotted hsl(45, 100%, 40%);
+}
+
+.h07,
+.matrix-table .h07 {
+  color: hsl(45, 100%, 40%);
+  background-color: hsl(45, 100%, 10%);
+  border: 0.1em dotted hsl(45, 100%, 40%);
+}
+
+.h08,
+.matrix-table .h08 {
+  color: hsl(45, 100%, 40%);
+  background-color: hsl(45, 100%, 10%);
+  border: 0.1em dotted hsl(45, 100%, 40%);
+}
+
+.h09,
+.matrix-table .h09 {
+  color: hsl(45, 100%, 40%);
+  background-color: hsl(45, 100%, 10%);
+  border: 0.1em dotted hsl(45, 100%, 40%);
+}
+
+.h010,
+.matrix-table .h010 {
+  color: hsl(45, 100%, 40%);
+  background-color: hsl(45, 100%, 10%);
+  border: 0.1em dotted hsl(45, 100%, 40%);
+}
+
+.h011,
+.matrix-table .h011 {
+  color: hsl(45, 100%, 40%);
+  background-color: hsl(45, 100%, 10%);
+  border: 0.1em dotted hsl(45, 100%, 40%);
+}
+
+.h10,
+.matrix-table .h10 {
+  color: hsl(338, 78%, 85%);
+  background-color: hsl(338, 78%, 40%);
+  border: 0.1em double hsl(338, 78%, 85%);
+}
+
+.h11,
+.matrix-table .h11 {
+  color: hsl(338, 78%, 70%);
+  background-color: hsl(338, 78%, 30%);
+  border: 0.1em double hsl(338, 78%, 70%);
+}
+
+.h12,
+.matrix-table .h12 {
+  color: hsl(338, 78%, 55%);
+  background-color: hsl(338, 78%, 20%);
+  border: 0.1em double hsl(338, 78%, 55%);
+}
+
+.h13,
+.matrix-table .h13 {
+  color: hsl(338, 78%, 40%);
+  background-color: hsl(338, 78%, 10%);
+  border: 0.1em double hsl(338, 78%, 40%);
+}
+
+.h14,
+.matrix-table .h14 {
+  color: hsl(338, 78%, 40%);
+  background-color: hsl(338, 78%, 10%);
+  border: 0.1em double hsl(338, 78%, 40%);
+}
+
+.h15,
+.matrix-table .h15 {
+  color: hsl(338, 78%, 40%);
+  background-color: hsl(338, 78%, 10%);
+  border: 0.1em double hsl(338, 78%, 40%);
+}
+
+.h16,
+.matrix-table .h16 {
+  color: hsl(338, 78%, 40%);
+  background-color: hsl(338, 78%, 10%);
+  border: 0.1em double hsl(338, 78%, 40%);
+}
+
+.h17,
+.matrix-table .h17 {
+  color: hsl(338, 78%, 40%);
+  background-color: hsl(338, 78%, 10%);
+  border: 0.1em double hsl(338, 78%, 40%);
+}
+
+.h18,
+.matrix-table .h18 {
+  color: hsl(338, 78%, 40%);
+  background-color: hsl(338, 78%, 10%);
+  border: 0.1em double hsl(338, 78%, 40%);
+}
+
+.h19,
+.matrix-table .h19 {
+  color: hsl(338, 78%, 40%);
+  background-color: hsl(338, 78%, 10%);
+  border: 0.1em double hsl(338, 78%, 40%);
+}
+
+.h110,
+.matrix-table .h110 {
+  color: hsl(338, 78%, 40%);
+  background-color: hsl(338, 78%, 10%);
+  border: 0.1em double hsl(338, 78%, 40%);
+}
+
+.h111,
+.matrix-table .h111 {
+  color: hsl(338, 78%, 40%);
+  background-color: hsl(338, 78%, 10%);
+  border: 0.1em double hsl(338, 78%, 40%);
+}
+
+.h20,
+.matrix-table .h20 {
+  color: hsl(208, 79%, 85%);
+  background-color: hsl(208, 79%, 40%);
+  border: 0.1em dashed hsl(208, 79%, 85%);
+}
+
+.h21,
+.matrix-table .h21 {
+  color: hsl(208, 79%, 70%);
+  background-color: hsl(208, 79%, 30%);
+  border: 0.1em dashed hsl(208, 79%, 70%);
+}
+
+.h22,
+.matrix-table .h22 {
+  color: hsl(208, 79%, 55%);
+  background-color: hsl(208, 79%, 20%);
+  border: 0.1em dashed hsl(208, 79%, 55%);
+}
+
+.h23,
+.matrix-table .h23 {
+  color: hsl(208, 79%, 40%);
+  background-color: hsl(208, 79%, 10%);
+  border: 0.1em dashed hsl(208, 79%, 40%);
+}
+
+.h24,
+.matrix-table .h24 {
+  color: hsl(208, 79%, 40%);
+  background-color: hsl(208, 79%, 10%);
+  border: 0.1em dashed hsl(208, 79%, 40%);
+}
+
+.h25,
+.matrix-table .h25 {
+  color: hsl(208, 79%, 40%);
+  background-color: hsl(208, 79%, 10%);
+  border: 0.1em dashed hsl(208, 79%, 40%);
+}
+
+.h26,
+.matrix-table .h26 {
+  color: hsl(208, 79%, 40%);
+  background-color: hsl(208, 79%, 10%);
+  border: 0.1em dashed hsl(208, 79%, 40%);
+}
+
+.h27,
+.matrix-table .h27 {
+  color: hsl(208, 79%, 40%);
+  background-color: hsl(208, 79%, 10%);
+  border: 0.1em dashed hsl(208, 79%, 40%);
+}
+
+.h28,
+.matrix-table .h28 {
+  color: hsl(208, 79%, 40%);
+  background-color: hsl(208, 79%, 10%);
+  border: 0.1em dashed hsl(208, 79%, 40%);
+}
+
+.h29,
+.matrix-table .h29 {
+  color: hsl(208, 79%, 40%);
+  background-color: hsl(208, 79%, 10%);
+  border: 0.1em dashed hsl(208, 79%, 40%);
+}
+
+.h210,
+.matrix-table .h210 {
+  color: hsl(208, 79%, 40%);
+  background-color: hsl(208, 79%, 10%);
+  border: 0.1em dashed hsl(208, 79%, 40%);
+}
+
+.h211,
+.matrix-table .h211 {
+  color: hsl(208, 79%, 40%);
+  background-color: hsl(208, 79%, 10%);
+  border: 0.1em dashed hsl(208, 79%, 40%);
+}
+
+.h30,
+.matrix-table .h30 {
+  color: hsl(140, 60%, 80%);
+  background-color: hsl(140, 60%, 40%);
+  border: 0.1em solid hsl(140, 60%, 80%);
+}
+
+.h31,
+.matrix-table .h31 {
+  color: hsl(140, 60%, 60%);
+  background-color: hsl(140, 60%, 30%);
+  border: 0.1em solid hsl(140, 60%, 60%);
+}
+
+.h32,
+.matrix-table .h32 {
+  color: hsl(140, 60%, 45%);
+  background-color: hsl(140, 60%, 20%);
+  border: 0.1em solid hsl(140, 60%, 45%);
+}
+
+.h33,
+.matrix-table .h33 {
+  color: hsl(140, 60%, 30%);
+  background-color: hsl(140, 60%, 10%);
+  border: 0.1em solid hsl(140, 60%, 30%);
+}
+
+.h34,
+.matrix-table .h34 {
+  color: hsl(140, 60%, 30%);
+  background-color: hsl(140, 60%, 10%);
+  border: 0.1em solid hsl(140, 60%, 30%);
+}
+
+.h35,
+.matrix-table .h35 {
+  color: hsl(140, 60%, 30%);
+  background-color: hsl(140, 60%, 10%);
+  border: 0.1em solid hsl(140, 60%, 30%);
+}
+
+.h36,
+.matrix-table .h36 {
+  color: hsl(140, 60%, 30%);
+  background-color: hsl(140, 60%, 10%);
+  border: 0.1em solid hsl(140, 60%, 30%);
+}
+
+.h37,
+.matrix-table .h37 {
+  color: hsl(140, 60%, 30%);
+  background-color: hsl(140, 60%, 10%);
+  border: 0.1em solid hsl(140, 60%, 30%);
+}
+
+.h38,
+.matrix-table .h38 {
+  color: hsl(140, 60%, 30%);
+  background-color: hsl(140, 60%, 10%);
+  border: 0.1em solid hsl(140, 60%, 30%);
+}
+
+.h39,
+.matrix-table .h39 {
+  color: hsl(140, 60%, 30%);
+  background-color: hsl(140, 60%, 10%);
+  border: 0.1em solid hsl(140, 60%, 30%);
+}
+
+.h310,
+.matrix-table .h310 {
+  color: hsl(140, 60%, 30%);
+  background-color: hsl(140, 60%, 10%);
+  border: 0.1em solid hsl(140, 60%, 30%);
+}
+
+.h311,
+.matrix-table .h311 {
+  color: hsl(140, 60%, 30%);
+  background-color: hsl(140, 60%, 10%);
+  border: 0.1em solid hsl(140, 60%, 30%);
+}
+
+.h40,
+.matrix-table .h40 {
+  color: hsl(270, 80%, 90%);
+  background-color: hsl(270, 80%, 40%);
+  border: 0.1em solid hsl(270, 80%, 90%);
+}
+
+.h41,
+.matrix-table .h41 {
+  color: hsl(270, 80%, 75%);
+  background-color: hsl(270, 80%, 30%);
+  border: 0.1em solid hsl(270, 80%, 75%);
+}
+
+.h42,
+.matrix-table .h42 {
+  color: hsl(270, 80%, 60%);
+  background-color: hsl(270, 80%, 20%);
+  border: 0.1em solid hsl(270, 80%, 60%);
+}
+
+.h43,
+.matrix-table .h43 {
+  color: hsl(270, 80%, 45%);
+  background-color: hsl(270, 80%, 10%);
+  border: 0.1em solid hsl(270, 80%, 45%);
+}
+
+.h44,
+.matrix-table .h44 {
+  color: hsl(270, 80%, 30%);
+  background-color: hsl(270, 80%, 10%);
+  border: 0.1em solid hsl(270, 80%, 30%);
+}
+
+.h45,
+.matrix-table .h45 {
+  color: hsl(270, 80%, 30%);
+  background-color: hsl(270, 80%, 10%);
+  border: 0.1em solid hsl(270, 80%, 30%);
+}
+
+.h46,
+.matrix-table .h46 {
+  color: hsl(270, 80%, 30%);
+  background-color: hsl(270, 80%, 10%);
+  border: 0.1em solid hsl(270, 80%, 30%);
+}
+
+.h47,
+.matrix-table .h47 {
+  color: hsl(270, 80%, 30%);
+  background-color: hsl(270, 80%, 10%);
+  border: 0.1em solid hsl(270, 80%, 30%);
+}
+
+.h48,
+.matrix-table .h48 {
+  color: hsl(270, 80%, 30%);
+  background-color: hsl(270, 80%, 10%);
+  border: 0.1em solid hsl(270, 80%, 30%);
+}
+
+.h49,
+.matrix-table .h49 {
+  color: hsl(270, 80%, 30%);
+  background-color: hsl(270, 80%, 10%);
+  border: 0.1em solid hsl(270, 80%, 30%);
+}
+
+.h410,
+.matrix-table .h410 {
+  color: hsl(270, 80%, 30%);
+  background-color: hsl(270, 80%, 10%);
+  border: 0.1em solid hsl(270, 80%, 30%);
+}
+
+.h411,
+.matrix-table .h411 {
+  color: hsl(270, 80%, 30%);
+  background-color: hsl(270, 80%, 10%);
+  border: 0.1em solid hsl(270, 80%, 30%);
+}
+
+/* ====== Toggle Functions Button ====== */
+#toggle-functions-btn {
+  background: #333;
+  color: #e0e0e0;
+  border: 0.1em solid #444;
+  border-radius: 0.25em;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#toggle-functions-btn:hover {
+  background: #444;
+  color: #ccccff;
+}
+
+/* ====== Responsive ====== */
+@media only screen and (max-device-width: 960px) {
+  .sidebar {
+    position: fixed;
+  }
+}
+
+@media only screen and (max-device-width: 430px)
+/* iPhone 14 Pro Max width, catches all smaller iPhones too */
+and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 100%;
+    position: fixed;
+    font-size: 2em;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  body {
+    font-size: 2.5em;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .hamburger {
+    display: block;
+    z-index: -1;
+  }
+}

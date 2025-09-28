@@ -1,0 +1,1 @@
+method = "torch.i0";

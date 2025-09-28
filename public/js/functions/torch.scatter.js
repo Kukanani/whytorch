@@ -1,0 +1,84 @@
+const method = "torch.scatter";
+function do_function(fxnArgs) {
+  let input = fxnArgs.input;
+  let dim = fxnArgs.dim;
+  let dimVal = dim.getItem([0]).value;
+  let index = fxnArgs.index;
+  let src = fxnArgs.src;
+  var resultData = structuredClone(input.data);
+  const result = new Tensor("ans", resultData, false, 0, document.getElementById("equation"), fxnArgs);
+
+  for (let i = 0; i < result.items.length; i++) {
+    for (let j = 0; j < result.items[i].length; j++) {
+      result.getItem([i, j]).addRelation(input, [i, j]);
+      result.getItem([i, j]).explainingEquation = (r) => {
+        return `input[${i}, ${j}] = ` + input.getItem([i, j]).makeElem().outerHTML + " = " + r.makeElem().outerHTML;
+      };
+    }
+  }
+
+  if (dimVal === 0) {
+    for (let i = 0; i < index.items.length; i++) {
+      for (let j = 0; j < index.items[i].length; j++) {
+        var iitem = index.getItem([i, j]);
+        var sitem = src.getItem([i, j]);
+        var ritem = result.getItem([iitem.value, j]);
+        ritem.value = sitem.value;
+        ritem.removeAllRelations();
+        ritem.addRelation(src, [i, j]);
+        ritem.addRelation(index, [i, j]);
+        ritem.addRelation(dim, []);
+        ritem.explainingEquation = (r) => {
+          return `src[${index.getItem([i, j]).makeElem(d=dim).outerHTML}, ${j}] = ${src.getItem([i, j]).makeElem().outerHTML} = ` + r.makeElem().outerHTML;
+        };
+      }
+    }
+  } else if (dimVal === 1) {
+    for (let i = 0; i < index.items.length; i++) {
+      for (let j = 0; j < index.items[i].length; j++) {
+        var iitem = index.getItem([i, j]);
+        var sitem = src.getItem([i, j]);
+        var ritem = result.getItem([i, iitem.value]);
+        ritem.value = sitem.value;
+        ritem.removeAllRelations();
+        ritem.addRelation(src, [i, j]);
+        ritem.addRelation(index, [i, j]);
+        ritem.addRelation(dim, []);
+        ritem.explainingEquation = (r) => {
+          return `src[${i}, ${index.getItem([i, j]).makeElem(d=dim).outerHTML}] = ${src.getItem([i, j]).makeElem().outerHTML} -> ` + r.makeElem().outerHTML;
+        };
+      }
+    }
+  }
+  return result;
+}
+const sourceCode = `
+  <code>ans = <a href=\"https://pytorch.org/docs/stable/generated/torch.scatter.html\">torch.scatter</a>(input, dim, index, src)</code><br/>
+`;
+const explanation = `
+  <div class=\"explanation\">
+  <p><code>scatter</code> writes values from <code>src</code> into <code>input</code> at the indices specified by <code>index</code> along dimension <code>dim</code>.</p>
+  <p>For each location in <code>index</code>, the result contains the value from <code>src</code> at that index.</p>
+  </div>
+`;
+
+var fxnArgs = {};
+let input = new Tensor("input", [
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0]
+], true, 1, document.getElementById("equation"), fxnArgs, -9, 99);
+let dim = new Tensor("dim", 0, true, 4, document.getElementById("equation"), fxnArgs, 0, 1);
+let index = new Tensor("index", [
+  [2, 1, 0],
+  [0, 1, 1]
+], true, 2, document.getElementById("equation"), fxnArgs, 0, 2);
+let src = new Tensor("src", [
+  [10, 20, 30],
+  [40, 50, 60],
+  [70, 80, 90]
+], true, 3, document.getElementById("equation"), fxnArgs, -9, 99);
+fxnArgs.input = input;
+fxnArgs.index = index;
+fxnArgs.src = src;
+fxnArgs.dim = dim;

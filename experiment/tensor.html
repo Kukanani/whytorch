@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="../public/css/style.css" type="text/css" />
+  <meta name="color-scheme" content="dark">
+</head>
+<body>
+  <button class="hamburger" onclick="toggleSidebar()">
+    all methods
+  </button>
+  <div class="main-container">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="/">WhyTorch</a>
+      </div>
+      <div class="sidebar-content" id="sidebar-content">
+        <!-- Methods will be populated by JavaScript -->
+      </div>
+    </div>
+    <div class="main-content-pane">
+      <div class="main-content">
+        <div class="content">
+          <div id="sourceCode"></div>
+          <div id="tensors"></div>
+          <div id="equation"></div>
+          <div id="explanation"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../public/js/tensor.js"></script>
+  <script src="tensortest.js"></script>
+</body>
+</html>
