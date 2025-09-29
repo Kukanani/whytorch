@@ -36,6 +36,8 @@ const supportedMethods = [
   'torch.maximum',
   'torch.fmin',
   'torch.fmax',
+  'torch.mean',
+  'torch.nanmean',
   'torch.div',
   'torch.divide',
   'torch.sin',

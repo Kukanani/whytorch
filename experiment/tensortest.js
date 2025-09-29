@@ -3,12 +3,12 @@ const equationElem = document.getElementById("equation");
 
 var tensors = [];
 
-var t = new Tensor("A", [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 2, 3], [4, 5, 6], [7, 8, 9]], false, 1, equationElem, tensors);
-t.getItem([0, 0]).makeExplainingEquation = () => "This is the top-left element of matrix A.";
-t.getItem([1, 0]).makeExplainingEquation = () => "This is the (1, 0) element of matrix A.";
-t.getItem([0, 2]).makeExplainingEquation = () => "This is the (0, 2) element of matrix A.";
+var t = new Tensor("input", [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 2, 3], [4, 5, 6], [7, 8, 9]], false, 1, equationElem, tensors);
+t.getItem([0, 0]).makeExplainingEquation = () => "This is the top-left element of matrix input.";
+t.getItem([1, 0]).makeExplainingEquation = () => "This is the (1, 0) element of matrix input.";
+t.getItem([0, 2]).makeExplainingEquation = () => "This is the (0, 2) element of matrix input.";
 
-var t2 = new Tensor("B", [1, 2, NaN], false, 2, equationElem, tensors);
+var t2 = new Tensor("other", [1, 2, NaN], false, 2, equationElem, tensors);
 t2.getItem([0]).addRelation(t, [0, 0]);
 t2.getItem([0]).addRelation(t, [1, 0]);
 t2.getItem([1]).addRelation(t, [1, 1]);

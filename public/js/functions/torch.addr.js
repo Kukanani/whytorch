@@ -24,7 +24,7 @@ const sourceCode = `
 `;
 const explanation = `
   <div class="explanation">
-  <p><code>addr</code> performs the <a href="https://en.wikipedia.org/wiki/Outer_product">outer product</a> of two tensors and adds it to the input.</p>
+  <p><code>addr</code> calculates the <a href="https://en.wikipedia.org/wiki/Outer_product">outer product</a> of two tensors and adds it to the input.</p>
 
   <p>The item in the <code>i</code>th row and <code>j</code>th column of <code>ans</code> is the
   product of the <code>i</code>th element of <code>vec1</code> and the <code>j</code>th element of <code>vec2</code>, plus the corresponding item in <code>input</code>.</p>
