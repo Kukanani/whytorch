@@ -86,11 +86,11 @@ body {
 }
 
 .method-list li {
-  margin-bottom: 0.25rem;
   display: block;
   padding: 0.25rem 0;
   font-size: 0.9em;
   font-family: monospace;
+  line-height: 1.5em;
 }
 
 .method-list a {
@@ -774,6 +774,7 @@ a {
   transition: background 0.2s, color 0.2s;
   width: 100%;
   box-sizing: border-box;
+  font-size: 1em;
 }
 
 #toggle-functions-btn:hover {
@@ -813,6 +814,6 @@ and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
 
   .hamburger {
     display: block;
-    z-index: -1;
+    z-index: 10;
   }
 }

@@ -18,7 +18,7 @@ function do_function(fxnArgs) {
         re.addRelation(index, [i, j]);
         re.addRelation(dim, []);
         re.explainingEquation = (r) => {
-          return `input[${index.getItem([i, j]).makeElem(d=dim).outerHTML}, ${j}] → ` + input.getItem([index.getItem([i, j]).value, i]).makeElem().outerHTML + " = " + r.makeElem().outerHTML;
+          return `input[${index.getItem([i, j]).makeElem(d=dim).outerHTML}, ${j}] = ` + input.getItem([index.getItem([i, j]).value, i]).makeElem().outerHTML + " → " + r.makeElem().outerHTML;
         };
       }
     }
@@ -32,7 +32,7 @@ function do_function(fxnArgs) {
         re.addRelation(index, [i, j]);
         re.addRelation(dim, []);
         re.explainingEquation = (r) => {
-          return `input[${i}, ${index.getItem([i, j]).makeElem(d=dim).outerHTML}] → ` + input.getItem([index.getItem([i, j]).value, i]).makeElem().outerHTML + " = " + r.makeElem().outerHTML;
+          return `input[${i}, ${index.getItem([i, j]).makeElem(d=dim).outerHTML}] = ` + input.getItem([index.getItem([i, j]).value, i]).makeElem().outerHTML + " → " + r.makeElem().outerHTML;
         };
       }
     }
