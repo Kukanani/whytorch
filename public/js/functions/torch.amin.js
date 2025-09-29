@@ -24,7 +24,7 @@ function do_function(fxnArgs) {
       result.getItem([i]).addRelation(input, elem.coords);
       result.getItem([i]).addRelation(dim, []);
     }
-    const addTermsHtml = itemsToGroup.map(x => x.makeElem().outerHTML).join(' , ');
+    const addTermsHtml = itemsToGroup.map(x => x.makeElem().outerHTML).join(',');
 
     result.getItem([i]).explainingEquation = (r) => {
       var coordsHTML = "";
