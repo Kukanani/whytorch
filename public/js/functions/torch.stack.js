@@ -1,9 +1,6 @@
 const method = "torch.stack";
 
-// Only support 1D input tensors
-function do_function(fxnArgs) {
-  let tensors = [fxnArgs.tensor0, fxnArgs.tensor1]; // Array of 1D Tensor objects
-  let dim = fxnArgs.dim;
+function stack(tensors, dim, fxnArgs) {
   let dimVal = dim.getItem([0]).value;
 
   const tensorCount = tensors.length;
@@ -11,10 +8,8 @@ function do_function(fxnArgs) {
 
   let resultValues;
   if (dimVal === 0) {
-    // Stack along new outer dimension: shape [tensorCount, tensorLength]
     resultValues = tensors.map(tensor => [...tensor.items]);
   } else {
-    // Stack along new last dimension: shape [tensorLength, tensorCount]
     resultValues = Array(tensorLength)
       .fill(null)
       .map((_, idx) => tensors.map(tensor => tensor.getItem([idx]).value));
@@ -47,6 +42,13 @@ function do_function(fxnArgs) {
     }
   }
   return result;
+}
+
+function do_function(fxnArgs) {
+  let tensors = [fxnArgs.tensor0, fxnArgs.tensor1];
+  let dim = fxnArgs.dim;
+
+  return stack(tensors, dim, fxnArgs);
 }
 
 const sourceCode = `

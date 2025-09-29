@@ -21,9 +21,10 @@ docker run --rm -d -p 80:80 -p 8080:8080 --name whytorch whytorch
 
 WhyTorch doesn't cover every function (try the sidebar on the site to see a list of unimplemented functions). That's where you can come in and help!
 
-1. Find a function you want to document - it should already have a `.js` file in `public/js/`
-1. Read some existing files (`public/js/torch.add.js`, `public/js/torch.gather.js`)
+1. Find a function you want to document - it should already have a `.js` file in `public/js/functions/`
+1. Read some existing files (`public/js/functions/torch.add.js`, `public/js/functions/torch.gather.js`)
 1. Fork this repo
 1. Write your function's js file
+1. Add it to the list `supportedMethods` in `public/js/main.js`
 1. Build and test locally using the instructions above
 1. Commit, push, and merge request

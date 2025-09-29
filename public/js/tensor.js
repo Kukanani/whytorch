@@ -1,6 +1,7 @@
 
 function makeDimIndicatorElement(d) {
     const dimIndicatorElement = document.createElement("span");
+    dimIndicatorElement.classList.add("hd");
     dimIndicatorElement.classList.add("hd" + d.orderNumber);
     const dimIndicatorElementInner = document.createElement("span");
     dimIndicatorElementInner.className = "hd-inner";

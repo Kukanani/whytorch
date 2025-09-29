@@ -43,6 +43,8 @@ const supportedMethods = [
   'torch.absolute',
   'torch.take',
   'torch.stack',
+  'torch.vstack',
+  'torch.hstack',
   'torch.div',
   'torch.divide',
   'torch.sin',
@@ -139,7 +141,7 @@ function init() {
 
       document.getElementById('sourceCode').innerHTML = sourceCode;
       document.getElementById('explanation').innerHTML = explanation;
-      document.getElementById('equation').innerHTML = "Click an element in <code>ans</code>";
+      document.getElementById('equation').innerHTML = "Click/tap any element to explain its usage";
       renderFxnArgs(fxnArgs);
     } else {
       document.getElementById('equation').innerHTML = `<p>The JS code to explain <u>${method}</u> hasn't been written yet.</p><p><a href="https://github.dev/Kukanani/whytorch/blob/main/public/js/functions/${method}.js">Help write it.</a></p>`;

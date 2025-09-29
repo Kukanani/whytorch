@@ -316,11 +316,7 @@ img {
   font-weight: bold;
 }
 
-.hd0,
-.hd1,
-.hd2,
-.hd3,
-.hd4 {
+.hd {
   position: relative;
   width: 0;
   height: 0;

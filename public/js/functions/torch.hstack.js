@@ -1,1 +1,1 @@
-method = "torch.hstack";
+const method = "torch.hstack";
