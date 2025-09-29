@@ -2,3 +2,4 @@
 _site/
 logs/
 node_modules/
+.vscode/
