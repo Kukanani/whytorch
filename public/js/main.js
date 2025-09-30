@@ -3,7 +3,7 @@ function renderFxnArgs(fxnArgs) {
   document.getElementById("tensors").innerHTML = "";
   let i = 1;
   Object.values(fxnArgs).forEach((tensor, idx) => {
-    if (tensor.name === "ans") {
+    if (tensor.name.startsWith("ans")) {
       tensor.display(document.getElementById("tensors"), 0);
     } else {
       tensor.display(document.getElementById("tensors"), idx);
@@ -22,50 +22,50 @@ function toggleFunctionList() {
 }
 
 const supportedMethods = [
-  'torch.gather',
-  'torch.scatter',
-  'torch.add',
-  'torch.amax',
-  'torch.amin',
-  'torch.sub',
-  'torch.subtract',
-  'torch.matmul',
-  'torch.mul',
-  'torch.multiply',
-  'torch.minimum',
-  'torch.maximum',
-  'torch.fmin',
-  'torch.fmax',
-  'torch.mean',
-  'torch.nanmean',
-  'torch.copysign',
   'torch.abs',
   'torch.absolute',
-  'torch.take',
-  'torch.stack',
-  'torch.vstack',
-  'torch.hstack',
+  'torch.add',
+  'torch.addr',
+  'torch.amax',
+  'torch.amin',
+  'torch.copysign',
+  'torch.cos',
+  'torch.cosh',
   'torch.div',
   'torch.divide',
-  'torch.sin',
-  'torch.cos',
-  'torch.tan',
-  'torch.sinh',
-  'torch.cosh',
-  'torch.tanh',
+  'torch.fmax',
+  'torch.fmin',
+  'torch.gather',
+  'torch.hstack',
+  'torch.matmul',
+  'torch.maximum',
+  'torch.mean',
+  'torch.minimum',
+  'torch.mul',
+  'torch.multiply',
+  'torch.nanmean',
   'torch.outer',
-  'torch.addr'
+  'torch.scatter',
+  'torch.sin',
+  'torch.sinh',
+  'torch.stack',
+  'torch.sub',
+  'torch.subtract',
+  'torch.take',
+  'torch.tan',
+  'torch.tanh',
+  'torch.vstack'
 ];
 
 
 // Group methods by category
 const categories = {
-  // 'Creation': ['zeros', 'zeros_like', 'ones', 'ones_like', 'arange', 'range', 'linspace', 'logspace', 'eye', 'empty', 'empty_like', 'empty_strided', 'full', 'full_like'],
+  'Creation': ['zeros', 'zeros_like', 'ones', 'ones_like', 'arange', 'range', 'linspace', 'logspace', 'eye', 'empty', 'empty_like', 'empty_strided', 'full', 'full_like'],
   // 'Complex': ['dequantize', 'complex', 'polar', 'heaviside', 'adjoint', 'conj'],
-  'Indexing': ['argwhere', 'cat', 'concat', 'concatenate', 'chunk', 'dsplit', 'column_stack', 'dstack', 'gather', 'hsplit', 'hstack', 'index_add', 'index_copy', 'index_reduce', 'index_select', 'masked_select', 'movedim', 'moveaxis', 'narrow', 'nonzero', 'permute', 'reshape', 'row_stack', 'select', 'scatter', 'diagonal_scatter', 'select_scatter', 'slice_scatter', 'scatter_add', 'scatter_reduce', 'split', 'squeeze', 'stack', 'swapaxes', 'swapdims', 't', 'take', 'take_along_dim', 'tensor_split', 'tile', 'transpose', 'unbind', 'unravel_index', 'unsqueeze', 'vsplit', 'vstack', 'where'],
+  'Indexing': ['argwhere', 'cat', 'concat', 'concatenate', 'chunk', 'dsplit', 'column_stack', 'dstack', 'gather', 'hsplit', 'hstack', 'index_add', 'index_copy', 'index_reduce', 'index_select', 'masked_select', 'movedim', 'moveaxis', 'narrow', 'nonzero', 'permute', 'reshape', 'row_stack', 'select', 'scatter', 'diagonal_scatter', 'select_scatter', 'slice_scatter', 'scatter_add', 'scatter_reduce', 'split', 'squeeze', 'stack', 'swapaxes', 'swapdims', 't', 'take', 'take_along_dim', 'tensor_split', 'tile', 'transpose', 'unbind', 'unravel_index', 'unsqueeze', 'vsplit', 'vstack', 'where', 'atleast_1d', 'atleast_2d', 'atleast_3d'],
   'Math': ['abs', 'absolute', 'add', 'addcdiv', 'addcmul', 'angle', 'bitwise_not', 'bitwise_and', 'bitwise_or', 'bitwise_xor', 'bitwise_left_shift', 'bitwise_right_shift', 'ceil', 'clamp', 'clip', 'conj_physical', 'copysign', 'cos', 'cosh', 'div', 'divide', 'digamma', 'erf', 'erfc', 'erfinv', 'exp', 'exp2', 'expm1', 'fix', 'float_power', 'floor', 'floor_divide', 'fmod', 'frac', 'frexp', 'gradient', 'imag', 'ldexp', 'lerp', 'lgamma', 'log', 'log10', 'log1p', 'log2', 'logaddexp', 'logaddexp2', 'logical_and', 'logical_not', 'logical_or', 'logical_xor', 'logit', 'hypot', 'i0', 'igamma', 'igammac', 'mul', 'multiply', 'mvlgamma', 'nan_to_num', 'neg', 'negative', 'nextafter', 'polygamma', 'positive', 'pow', 'rad2deg', 'real', 'reciprocal', 'remainder', 'round', 'rsqrt', 'sigmoid', 'sign', 'sgn', 'signbit', 'sin', 'sinc', 'sinh', 'softmax', 'sqrt', 'square', 'sub', 'subtract', 'tan', 'tanh', 'true_divide', 'trunc', 'xlogy'],
   'Statistics': ['amax', 'amin', 'max', 'min', 'maximum', 'minimum', 'fmin', 'fmax', 'dist', 'mean', 'nanmean', 'median', 'nanmedian', 'mode', 'norm', 'nansum', 'prod', 'std', 'std_mean', 'sum', 'var', 'var_mean'],
-  'Sorting': ['sort', 'topk', 'msort', 'atleast_1d', 'atleast_2d', 'atleast_3d'],
+  'Sorting': ['sort', 'topk', 'msort'],
   'Utilities': ['bincount', 'block_diag', 'broadcast_tensors', 'broadcast_to', 'cartesian_prod', 'cdist', 'clone', 'combinations', 'corrcoef', 'cov', 'cross', 'cummax', 'cummin', 'cumprod', 'cumsum', 'diag', 'diag_embed', 'diagflat', 'diagonal', 'diff', 'einsum', 'flatten', 'flip', 'fliplr', 'flipud', 'kron', 'rot90', 'gcd', 'histc', 'histogram', 'histogramdd', 'meshgrid', 'lcm', 'logcumsumexp', 'ravel', 'renorm', 'repeat_interleave', 'roll', 'searchsorted', 'tensordot', 'trace', 'tril', 'tril_indices', 'triu', 'triu_indices', 'unflatten', 'vander', 'view_as_real', 'view_as_complex', 'resolve_conj', 'resolve_neg'],
   'Linear Algebra': ['addbmm', 'addmm', 'addmv', 'addr', 'baddbmm', 'bmm', 'chain_matmul', 'cholesky', 'cholesky_inverse', 'cholesky_solve', 'dot', 'geqrf', 'ger', 'inner', 'inverse', 'det', 'logdet', 'slogdet', 'lu', 'lu_solve', 'lu_unpack', 'matmul', 'tensor_power', 'tensor_exp', 'mm', 'mv', 'orgqr', 'ormqr', 'outer', 'pinverse', 'qr', 'svd', 'svd_lowrank', 'pca_lowrank', 'lobpcg', 'trapz', 'trapezoid', 'cumulative_trapezoid', 'triangular_solve', 'vdot']
 };
