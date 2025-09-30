@@ -3,7 +3,7 @@ function renderFxnArgs(fxnArgs) {
   document.getElementById("tensors").innerHTML = "";
   let i = 1;
   Object.values(fxnArgs).forEach((tensor, idx) => {
-    if (tensor.name.startsWith("ans")) {
+    if (tensor.name.startsWith("ans") || tensor.name.startsWith("indices") || tensor.name.startsWith("values")) {
       tensor.display(document.getElementById("tensors"), 0);
     } else {
       tensor.display(document.getElementById("tensors"), idx);
@@ -31,6 +31,10 @@ const supportedMethods = [
   'torch.copysign',
   'torch.cos',
   'torch.cosh',
+  'torch.cummax',
+  'torch.cummin',
+  'torch.cumprod',
+  'torch.cumsum',
   'torch.cross',
   'torch.div',
   'torch.dot',
@@ -122,7 +126,13 @@ function clearAndDoFunction(fxnArgs) {
   try {
     document.getElementById("equation").innerHTML = "Calculating...";
     document.getElementById("tensors").classList.remove("error");
-    return do_function(fxnArgs);
+    ans = do_function(fxnArgs);
+
+    if (ans instanceof Tensor) {
+      fxnArgs.ans = ans;
+    } else {
+      Object.assign(fxnArgs, ans);
+    }
   }
   catch (e) {
     document.getElementById("tensors").classList.add("error");
@@ -138,8 +148,7 @@ function init() {
 
   try {
     if (supportedMethods.includes(method)) {
-      ans = clearAndDoFunction(fxnArgs);
-      fxnArgs.ans = ans;
+      clearAndDoFunction(fxnArgs);
 
       document.getElementById('sourceCode').innerHTML = sourceCode;
       document.getElementById('explanation').innerHTML = explanation;

@@ -27,7 +27,7 @@ const sourceCode = `
 const explanation = `
   <div class="explanation">
     <p><code>torch.take</code> takes values at the specified indices, assuming that the source data is flattened (the index "counts sequentially" through the source).</p>
-    <p>Each element in <code>ans</code> is the value of <code>input</code>at the (flattened) index specified by the corresponding item in <code>index</code>.</p>
+    <p>Each element in <code>ans</code> is the value of <code>input</code> at the (flattened) index specified by the corresponding item in <code>index</code>.</p>
   </div>
 `;
 

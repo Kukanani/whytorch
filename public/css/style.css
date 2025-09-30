@@ -172,6 +172,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  touch-action: manipulation;
 }
 
 #tensors.error {

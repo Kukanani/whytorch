@@ -115,7 +115,7 @@ class TensorItem {
         const newValue = parseFloat(event.target.value);
         this.value = newValue;
         this.parent.setData(this.coords, newValue);
-        fxnArgs.ans = clearAndDoFunction(fxnArgs);
+        clearAndDoFunction(fxnArgs);
         renderFxnArgs(fxnArgs);
         this.parent.equationElem.innerHTML = "";
         this.parent.dehighlightAllGlobal();
