@@ -38,7 +38,7 @@ body {
 }
 
 /* ====== Sidebar ====== */
-.sidebar {
+#sidebar {
   background-color: #2a2a2a;
   border-right: 0.1em solid #444;
   overflow-y: auto;
@@ -798,7 +798,7 @@ img {
 
 /* ====== Responsive ====== */
 @media only screen and (max-device-width: 960px) {
-  .sidebar {
+  #sidebar {
     position: fixed;
   }
 }
@@ -806,14 +806,14 @@ img {
 @media only screen and (max-device-width: 430px)
 /* iPhone 14 Pro Max width, catches all smaller iPhones too */
 and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-  .sidebar {
+  #sidebar {
     transform: translateX(-100%);
     width: 100%;
     position: fixed;
     font-size: 2em;
   }
 
-  .sidebar.open {
+  #sidebar.open {
     transform: translateX(0);
   }
 
@@ -821,13 +821,9 @@ and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
     font-size: 2.5em;
   }
 
-  .main-content {
-    margin-left: 0;
-    padding-left: 0;
-  }
-
   .hamburger {
     display: block;
     z-index: 10;
+    padding: 0.5em;
   }
 }

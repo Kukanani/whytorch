@@ -36,7 +36,6 @@ const supportedMethods = [
   'torch.fmax',
   'torch.fmin',
   'torch.gather',
-  'torch.hstack',
   'torch.matmul',
   'torch.maximum',
   'torch.mean',
@@ -167,8 +166,8 @@ document.addEventListener('click', (e) => {
   const sidebar = document.getElementById('sidebar');
   const hamburger = document.querySelector('.hamburger');
   if (
+    !e.target === document.getElementById("#toggle-functions-btn") &&
     !sidebar.contains(e.target) &&
-    !hamburger.contains(e.target) &&
     sidebar.classList.contains('open')) {
     sidebar.classList.remove('open');
   }
