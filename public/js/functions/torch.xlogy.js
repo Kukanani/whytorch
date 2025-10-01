@@ -1,1 +1,1 @@
-method = "torch.xlogy";
+const method = "torch.xlogy";

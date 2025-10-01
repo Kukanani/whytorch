@@ -1,7 +1,7 @@
 const method = "torch.cummax";
 
 function maxArray(arr) {
-  return arr.reduce((accumulator, currentValue) => Math.max(accumulator, currentValue), 1e10);
+  return arr.reduce((accumulator, currentValue) => Math.max(accumulator, currentValue), -1e10);
 }
 
 function do_function(fxnArgs) {
@@ -45,6 +45,7 @@ function do_function(fxnArgs) {
 
       let valuesToGroup = itemsToGroup.map(x => x.value);
       ind.value = valuesToGroup.indexOf(Math.max(...valuesToGroup));
+      ind.addRelation(dim, []);
       ind.explainingEquation = (r) => {
         var itemHTMLs = [];
         var coords = [i, j];
@@ -54,7 +55,7 @@ function do_function(fxnArgs) {
           itemHTMLs.push(input.getItem(coords).makeElem().outerHTML);
         }
         groupedHTML = itemHTMLs.join(",");
-        return `index(max(${groupedHTML})) = ${r.makeElem().outerHTML}`;
+        return `index of max(${groupedHTML}) along dim ${dim.getItem([]).makeElem().outerHTML} = ${r.makeElem().outerHTML}`;
       };
     }
   }

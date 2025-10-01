@@ -28,6 +28,9 @@ const supportedMethods = [
   'torch.addr',
   'torch.amax',
   'torch.amin',
+  'torch.cat',
+  'torch.concat',
+  'torch.concatenate',
   'torch.copysign',
   'torch.cos',
   'torch.cosh',
@@ -60,6 +63,8 @@ const supportedMethods = [
   'torch.take',
   'torch.tan',
   'torch.tanh',
+  'torch.tril',
+  'torch.triu',
   'torch.vstack'
 ];
 
