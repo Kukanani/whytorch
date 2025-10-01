@@ -65,7 +65,8 @@ const supportedMethods = [
   'torch.tanh',
   'torch.tril',
   'torch.triu',
-  'torch.vstack'
+  'torch.vstack',
+  'torch.xlogy',
 ];
 
 
@@ -157,7 +158,7 @@ function init() {
 
       document.getElementById('sourceCode').innerHTML = sourceCode;
       document.getElementById('explanation').innerHTML = explanation;
-      document.getElementById('equation').innerHTML = "Click/tap any element to explain its usage";
+      document.getElementById('equation').innerHTML = "Click/tap any element to explain it";
       renderFxnArgs(fxnArgs);
     } else {
       document.getElementById('equation').innerHTML = `<p>The JS code to explain <u>${method}</u> hasn't been written yet.</p><p><a href="https://github.dev/Kukanani/whytorch/blob/main/public/js/functions/${method}.js">Help write it.</a></p>`;

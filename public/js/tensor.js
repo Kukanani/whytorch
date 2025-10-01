@@ -59,9 +59,9 @@ class TensorItem {
   }
 
   makeRelationEquationsAndHighlight(equationsElem) {
-    if (this.relations.length === 0) {
-      return "";
-    }
+    // if (this.relations.length === 0) {
+    //   return "";
+    // }
     const equationsList = [];
     const highlightList = [];
     const traverse = (sourceTensor, tensor, coords, visited = new Set(), propagate = true) => {

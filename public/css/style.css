@@ -181,6 +181,7 @@ img {
 }
 
 .tensorname {
+  text-decoration: underline;
   width: 100%;
   text-align: center;
   display: inline-block;
@@ -188,6 +189,7 @@ img {
   font-family: monospace;
   font-size: 1.2em;
   padding-bottom: 1em;
+  color: white !important;
 }
 
 #sourceCode {
@@ -327,24 +329,29 @@ img {
   font-size: 0.8em;
 }
 
-.hd0 {
+.hd0, .tensor-0 .tensorname {
   color: hsl(45, 100%, 55%);
+  text-decoration-color: hsl(45, 100%, 55%);
 }
 
-.hd1 {
+.hd1, .tensor-1 .tensorname {
   color: hsl(338, 78%, 55%);
+  text-decoration-color: hsl(338, 78%, 55%);
 }
 
-.hd2 {
+.hd2, .tensor-2 .tensorname {
   color: hsl(208, 79%, 55%);
+  text-decoration-color: hsl(208, 79%, 55%);
 }
 
-.hd3 {
+.hd3, .tensor-3 .tensorname {
   color: hsl(140, 60%, 45%);
+  text-decoration-color: hsl(140, 60%, 45%);
 }
 
-.hd4 {
+.hd4, .tensor-4 .tensorname {
   color: hsl(270, 80%, 60%);
+  text-decoration-color: hsl(270, 80%, 60%);
 }
 
 .hd-inner {

@@ -17,35 +17,34 @@ function do_function(fxnArgs) {
     }
   }
 
-  if (dimVal === 0) {
-    for (let i = 0; i < index.items.length; i++) {
-      for (let j = 0; j < index.items[i].length; j++) {
+  for (let i = 0; i < index.items.length; i++) {
+    for (let j = 0; j < index.items[i].length; j++) {
+      let coords = [i, j];
+      var iitem = index.getItem([i, j]);
+      var sitem = src.getItem([i, j]);
+      coords[dimVal] = iitem.value;
+      var ritem = result.getItem(coords);
+      ritem.value = sitem.value;
+      ritem.removeAllRelations();
+      ritem.addRelation(src, [i, j]);
+      ritem.addRelation(index, [i, j]);
+      ritem.addRelation(input, coords);
+      ritem.addRelation(dim, []);
+      ritem.explainingEquation = (r) => {
+        let coords = [i, j];
         var iitem = index.getItem([i, j]);
         var sitem = src.getItem([i, j]);
-        var ritem = result.getItem([iitem.value, j]);
-        ritem.value = sitem.value;
-        ritem.removeAllRelations();
-        ritem.addRelation(src, [i, j]);
-        ritem.addRelation(index, [i, j]);
-        ritem.addRelation(dim, []);
-        ritem.explainingEquation = (r) => {
-          return `src[${index.getItem([i, j]).makeElem(d=dim).outerHTML}, ${j}] = ${src.getItem([i, j]).makeElem().outerHTML} → ${r.makeElem().outerHTML}`;
-        };
-      }
+        coords[dimVal] = iitem.value;
+        return `src[${index.getItem([i, j]).makeElem(d=dim).outerHTML}, ${j}] = ${src.getItem([i, j]).makeElem().outerHTML} → ${r.makeElem().outerHTML} (overwrites ${input.getItem(coords).makeElem().outerHTML})`;
+      };
     }
-  } else if (dimVal === 1) {
-    for (let i = 0; i < index.items.length; i++) {
-      for (let j = 0; j < index.items[i].length; j++) {
-        var iitem = index.getItem([i, j]);
-        var sitem = src.getItem([i, j]);
-        var ritem = result.getItem([i, iitem.value]);
-        ritem.value = sitem.value;
-        ritem.removeAllRelations();
-        ritem.addRelation(src, [i, j]);
-        ritem.addRelation(index, [i, j]);
-        ritem.addRelation(dim, []);
-        ritem.explainingEquation = (r) => {
-          return `src[${i}, ${index.getItem([i, j]).makeElem(d=dim).outerHTML}] = ${src.getItem([i, j]).makeElem().outerHTML} → ${r.makeElem().outerHTML}`;
+  }
+  for (let i = 0; i < src.items.length; i++) {
+    for (let j = 0; j < src.items[i].length; j++) {
+      var sitem = src.getItem([i, j]);
+      if(sitem.relations.length === 0) {
+        sitem.explainingEquation = (r) => {
+          return `${r.makeElem().outerHTML} does not appear in <code>${result.name}</code> because it is not selected for scattering by <code>${index.name}</code>`;
         };
       }
     }
@@ -64,14 +63,14 @@ const explanation = `
 
 var fxnArgs = {};
 let input = new Tensor("input", [
-  [0, 0, 0],
-  [0, 0, 0],
-  [0, 0, 0]
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
 ], true, 1, document.getElementById("equation"), fxnArgs, -9, 99);
 let dim = new Tensor("dim", 0, true, 4, document.getElementById("equation"), fxnArgs, 0, 1);
 let index = new Tensor("index", [
-  [2, 1, 0],
-  [0, 1, 1]
+  [2, 0, 0],
+  [0, 0, 1]
 ], true, 2, document.getElementById("equation"), fxnArgs, 0, 2);
 let src = new Tensor("src", [
   [10, 20, 30],
@@ -79,6 +78,6 @@ let src = new Tensor("src", [
   [70, 80, 90]
 ], true, 3, document.getElementById("equation"), fxnArgs, -9, 99);
 fxnArgs.input = input;
+fxnArgs.dim = dim;
 fxnArgs.index = index;
 fxnArgs.src = src;
-fxnArgs.dim = dim;
