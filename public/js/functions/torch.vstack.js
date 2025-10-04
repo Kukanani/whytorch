@@ -52,7 +52,7 @@ function do_function(fxnArgs) {
 }
 
 const sourceCode = `
-  <code>ans = <a href="https://pytorch.org/docs/stable/generated/torch.vstack.html">torch.vstack</a>([tensor0, tensor1, ...], dim)</code><br/>
+  <code>ans = <a href="https://pytorch.org/docs/stable/generated/torch.vstack.html">torch.vstack</a>([tensor0, tensor1, ...])</code><br/>
 `;
 
 const explanation = `

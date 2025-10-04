@@ -44,7 +44,7 @@ function do_function(fxnArgs) {
       var sitem = src.getItem([i, j]);
       if(sitem.relations.length === 0) {
         sitem.explainingEquation = (r) => {
-          return `${r.makeElem().outerHTML} does not appear in <code>${result.name}</code> because it is not selected for scattering by <code>${index.name}</code>`;
+          return `${r.makeElem().outerHTML} does not appear in <code>${result.name}</code> because it is beyond the size of <code>${index.name}</code>`;
         };
       }
     }
@@ -55,10 +55,8 @@ const sourceCode = `
   <code>ans = <a href=\"https://pytorch.org/docs/stable/generated/torch.scatter.html\">torch.scatter</a>(input, dim, index, src)</code><br/>
 `;
 const explanation = `
-  <div class=\"explanation\">
   <p><code>scatter</code> writes values from <code>src</code> into <code>input</code> at the indices specified by <code>index</code> along dimension <code>dim</code>.</p>
   <p>For each location in <code>index</code>, the result contains the value from <code>src</code> at that index.</p>
-  </div>
 `;
 
 var fxnArgs = {};

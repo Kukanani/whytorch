@@ -43,10 +43,9 @@ const sourceCode = `
   <code>ans = <a href=\"https://pytorch.org/docs/stable/generated/torch.gather.html\">torch.gather</a>(input, dim, index)</code><br/>
 `;
 const explanation = `
-  <div class=\"explanation\">
   <p><code>gather</code> collects values from <code>input</code> at the indices specified by <code>index</code> along dimension <code>dim</code>.</p>
   <p>For each location in <code>index</code>, the result contains the value from <code>input</code> at that index.</p>
-  </div>
+  <p><code>torch.index_select</code> is a simplified version of this which uses the same index along <code>dim</code> for all elements.</p>
 `;
 
 var fxnArgs = {};
