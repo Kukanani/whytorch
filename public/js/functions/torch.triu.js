@@ -17,7 +17,7 @@ function do_function(fxnArgs) {
       } else {
         re.value = 0;
         re.addRelation(diagonal, []);
-        re.explainingEquation = (r) => `below diagonal ${diagonal.getItem([]).makeElem().outerHTML} → ${r.makeElem().outerHTML}`;
+        re.explainingEquation = (r) => `above diagonal ${diagonal.getItem([]).makeElem().outerHTML} → ${r.makeElem().outerHTML}`;
       }
     }
   }
