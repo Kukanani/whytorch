@@ -34,7 +34,7 @@ function do_function(fxnArgs) {
         } else {
           coordsHTML += i;
         }
-        if (j == 0) {
+        if (j === 0) {
           coordsHTML += ", ";
         }
       }

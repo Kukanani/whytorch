@@ -192,9 +192,16 @@ class Tensor {
   }
 
   getItem(coords) {
+    for (let [index, c] of coords.entries()) {
+      if (c < 0) {
+        // negative indexing
+        coords[index] = this.shape[index] + c;
+      }
+    }
+
     var te = this.items;
     if (!(te instanceof Array)) return te; // scalar
-    for (let c of coords) {
+    for (const c of coords) {
       te = te[c];
     }
     return te;
